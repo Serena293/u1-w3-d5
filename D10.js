@@ -142,8 +142,8 @@ Ho usato il metodo substing(startIndex, endIndex)
 
 console.log("Esercizio 4: ", deleteOne("Sto imparanfo js!", true));
 console.log("Esercizio 4: ", deleteOne("Sto imparanfo js!", false));
-console.log("Esercizio 4: ", deleteOne("5 è un valore true",  5));
-console.log("Esercizio 4: ", deleteOne("Mentre 0 è un valore falso ", 0>-4));
+console.log("Esercizio 4: ", deleteOne("5 è un valore true", 5));
+console.log("Esercizio 4: ", deleteOne("Mentre 0 è un valore falso ", 0 > -4));
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
@@ -152,19 +152,18 @@ console.log("Esercizio 4: ", deleteOne("Mentre 0 è un valore falso ", 0>-4));
 */
 
 const onlyLetters = (str) => {
-let regex = /[^a-zA-Z' ']/g;
- return str.replace(regex, '') // il metodo replace rimpiazze tutto quello espresso dal primo parametro con quello espresso dal secondo
-}
+  const regex = /[^a-zA-Z' ']/g;
+  return str.replace(regex, ""); // il metodo replace rimpiazze tutto quello espresso dal primo parametro con quello espresso dal secondo
+};
 //per eliminare tutti i caratteri che non fossero lettere dell'alfabeto e spazi ho usato una regular expression
 //  / indica dove l'espressione inizia e finisce
 // [] racchiude i tipi di carattere che vogliamo considere, tutte le lettere sell alfabeto sia maiuscole che minuscole e gli spazi vuoti
-// ^ significa no. 
+// ^ significa no.
 // Quindi qualsiasi carettere che NON è una lettera o uno spazio verà esclusa
 
-console.log('Esercizio 5: ', onlyLetters('CIAO 56, CIAO'))
-console.log('Esercizio 5: ', onlyLetters('76|=9875Ciao,.Hello,598375289,Hola'))
-console.log('Esercizio 5: ', onlyLetters('I have 4 dogs'))
-
+console.log("Esercizio 5: ", onlyLetters("CIAO 56, CIAO"));
+console.log("Esercizio 5: ", onlyLetters("76|=9875Ciao,.Hello,598375289,Hola"));
+console.log("Esercizio 5: ", onlyLetters("I have 4 dogs"));
 
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
@@ -175,16 +174,55 @@ console.log('Esercizio 5: ', onlyLetters('I have 4 dogs'))
   if (email.toLowerCase().match(regex) ){
 console.log('valid email address')
   } else {console.log('Email not valid')}
-} */ 
-//primo tentativo, ma non funziona. L'idea era di considerare come email valida ogni stringa che contensse una @ o .com e .it (non molto preciso)
-
-
+} 
+  
 console.log(isThisAnEmail('serena@gmail.com'))
 
-console.log(isThisAnEmail('serenagmail'))
+console.log(isThisAnEmail('serenagmail'))*/
+//primo tentativo, ma non funziona. L'idea era di considerare come email valida ogni stringa che contensse una @ o .com e .it (non molto preciso)
+
+// approccio 2:
+const isThisAnEmail = (email) => {
+  const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  //questa è una regular expression che viene usata per validare gli indirizzi email
+  //il + separe le diverse parti dell'indizzo
+
+  if (regex.test(email)) {
+    // il metodo test valuta se tutto quello contenuto nella variabile regex è aplicabibile all'email
+    console.log("Valid email address");
+  } else {
+    console.log("Email not valid");
+  }
+};
+
+isThisAnEmail("serena@gmail.com");
+isThisAnEmail("serena.com");
+
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
 */
+
+const whatDayIsIt = () => {
+  const date = new Date(); //Importiamo la data
+  const dayIndex = date.getDay(); //estrapoliamo il valore numerico corrispondente al giorno della settimana
+  const daysOfTheWeek = [
+    "Lunedì", // 0
+    "Martedì",
+    "Mercoledì",
+    "Giovedì",
+    "Venerdì",
+    "Sabato",
+    "Domenica",
+  ]; // creaiamo un Array con i nomi della settima (indice parte da 0, come i tutti gli array)
+
+  const day = daysOfTheWeek[dayIndex - 1];
+  // calcoliamo a che giorno corrispone il valore numerico dayIndex
+  //Si prende il giorno della settimana dall'Array e si usa come indice il valore numerico (dayIndex) -1
+  //sottraiamo 1 perchè gli indici degli Array partono da 0
+
+  return day;
+};
+console.log(whatDayIsIt());
 
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
@@ -199,13 +237,55 @@ console.log(isThisAnEmail('serenagmail'))
   }
 */
 
+const rollTheDices = (num) => {
+  const result = {
+    sum: 0,
+    values: [],
+  }; // array dove conservare tutti i valori
+
+  for (let i = 0; i < num; i++) {
+    //loop che rilancia la funzione un nuemero di volte pari al parametro (num)
+    const luckyNumber = dice(); //assegno la funzione creata precedentemente ad una  nuova costante
+
+    result.values.push(luckyNumber); //Inserisco il valore estratto nell'arry esistente
+    result.sum += luckyNumber; // Somma di tutti i valori estratti
+  }
+
+  return result;
+};
+console.log("Esercizio 8: ", rollTheDices(5));
+console.log("Esercizio 8: ", rollTheDices(4));
+
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
 */
 
+const howManyDays = (date) => {
+  const today = new Date(); //importo la data
+
+  const otherDate = new Date(date); //data presa dal paramentro
+
+  const diffDateMilliseconds = today - otherDate; //differenza di tempo in millisecondi
+
+  const diffInDays = Math.abs(
+    Math.floor(diffDateMilliseconds / (1000 * 60 * 60 * 24))
+  ); //conversione in giorni
+  return diffInDays;
+};
+console.log(howManyDays("2024-10-17")); //la data va messa nel format anno-mese-giorno
+
 /* ESERCIZIO 10
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
+
+const isTodayMyBirthday = (date) => {
+  const myBirthDay = new Date(date) //importo una data(compleanno)
+  const today = new Date() //data di oggi
+
+myBirthDay === today ? console.log('è il mio compleanno') : console.log('Oggi non è il mio compleanno') //verifico se le date corrispondono
+
+};
+isTodayMyBirthday(2-28)
 
 // Arrays & Oggetti
 
