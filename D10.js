@@ -597,7 +597,7 @@ const halfTree = (num) => {
   const star = '*' //il simbolo che vogliamo usare per creare l'albero
  for (let i = 0; i<num; i++) //un ciclo così da iterare numero di volte uguale al paramentro scelto
  {console.log(star.repeat(num))} //repeat stampa la variate tante volte quanto indicato dal paramentro
- 
+
 
 }
 halfTree(3)
