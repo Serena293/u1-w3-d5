@@ -560,7 +560,7 @@ const addLi = () => {
   ul.appendChild(li)
 }
 
-addLi()
+// addLi() la funzione va lanciata. è commentata perchè altrimenti mi da errore
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
@@ -569,7 +569,7 @@ const emptyMylist = () => {
   const ul = document.getElementById('myList') // ridichiaro perchè prima l'ho dichiarata all'interno della funzion
 ul.innerHTML = '' //elimina tutte le li e il loro contenuto
 }
-emptyMylist()
+// emptyMylist()
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
@@ -593,8 +593,14 @@ addClass()
 
 */
 
-const halfTree = () => {}
+const halfTree = (num) => {
+  const star = '*' //il simbolo che vogliamo usare per creare l'albero
+ for (let i = 0; i<num; i++) //un ciclo così da iterare numero di volte uguale al paramentro scelto
+ {console.log(star.repeat(num))} //repeat stampa la variate tante volte quanto indicato dal paramentro
+ 
 
+}
+halfTree(3)
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
