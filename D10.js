@@ -15,29 +15,23 @@ REGOLE
 
 //const sum = 10 + 20 //soluzione valida
 
-let a = 10
-let b = 20 
-let sum = 10 + 20 // altra soluzione, ho usato let così è possibile riassegnare i valori
+let a = 10;
+let b = 20;
+let sum = 10 + 20; // altra soluzione, ho usato let così è possibile riassegnare i valori
 
-console.log('Esercizio A: ', sum)
+console.log("Esercizio A: ", sum);
 /* ESERCIZIO B
   Crea una variabile chiamata "random" e assegnaci un numero casuale tra 0 e 20 (deve essere generato dinamicamente a ogni esecuzione).
 */
 
-const random = Math.floor(Math.random()*21) // Math floor arrotonda all'inter più basso, quindi considera tutti i nuemeri tra 0 e 20
-console.log('Esercizio B: ',random)
-
+const random = Math.floor(Math.random() * 21); // Math floor arrotonda all'inter più basso, quindi considera tutti i nuemeri tra 0 e 20
+console.log("Esercizio B: ", random);
 
 /* ESERCIZIO C
   Crea una variabile chiamata "me" e assegnaci un oggetto contenente le seguenti proprietà: name = il tuo nome, surname = il tuo cognome, age = la tua età.
 */
- 
-const me = {name: 'serena',
-  surname: 'ferraro',
-  age:  31
-}
 
-
+const me = { name: "serena", surname: "ferraro", age: 31 };
 
 //La prassi è di creare gli oggetti usando const poichè non ne andreamo a cambiare il contenuto ed occupatno meno spazio in memoria
 
@@ -45,17 +39,17 @@ const me = {name: 'serena',
   Crea del codice per rimuovere programmaticamente la proprietà "age" dall'oggetto precedentemente creato.
 */
 
-delete me.age //delete è l'operatore che si usa per rimuovere proprità da oggetti
+delete me.age; //delete è l'operatore che si usa per rimuovere proprità da oggetti
 
-console.log('Esercizio D',me)
+console.log("Esercizio D", me);
 
 /* ESERCIZIO E
   Crea del codice per aggiungere programmaticamente all'oggetto precedentemente creato un array chiamato "skills", contenente i linguaggi di programmazione che conosci.
 */
 
- me.skills = 'JavaScript'  //dot notation per accedere, modificare e aggiungere una proprietà. 
+me.skills = "JavaScript"; //dot notation per accedere, modificare e aggiungere una proprietà.
 
- console.log('Esercizio E: ', me)
+console.log("Esercizio E: ", me);
 
 /* ESERCIZIO F
   Crea un pezzo di codice per aggiungere un nuovo elemento all'array "skills" contenuto nell'oggetto "me".
@@ -64,18 +58,17 @@ console.log('Esercizio D',me)
 /*Poichè avevo precedentemente assegnato a skill una stringa e non un array (poichè ho considerato html e css linguaggi di mark up e non di programmazione)
 Non ho potuto applicare direttamente il metodo push.
 */
-me.skills = me.skills.split(',')  //ho troasformato la mia stringa in un array
-me.skills.push('HTML') //ho aggiuto un nuovo elemento
+me.skills = me.skills.split(","); //ho troasformato la mia stringa in un array
+me.skills.push("HTML"); //ho aggiuto un nuovo elemento
 
-console.log('Esercizio F: ', me)
+console.log("Esercizio F: ", me);
 
 /* ESERCIZIO G
   Crea un pezzo di codice per rimuovere programmaticamente l'ultimo elemento dall'array "skills" contenuto nell'oggetto "me".
 */
 
-me.skills.pop() // Ora ho un array, posso applicare .pop() direttamete.
-console.log('Esercizio G: ', me)
-
+me.skills.pop(); // Ora ho un array, posso applicare .pop() direttamete.
+console.log("Esercizio G: ", me);
 
 // Funzioni
 
@@ -83,9 +76,35 @@ console.log('Esercizio G: ', me)
   Crea una funzione chiamata "dice": deve generare un numero casuale tra 1 e 6.
 */
 
+const dice = () => Math.ceil(Math.random() * 6);
+/*Ho usato un arrow function, ma const dice = function(){} è un'altra valida opzione.
+Math.ceil() arrotonda il numero casuale trovato con Math.random all'intero  più alto, in questo modo escludo lo zero
+e sonsidero i numeri tra 1 e 6. 
+Non ho bisogno di scrivere esplicitamente return e di mettere le {} poichè è una funzione monoriga*/
+
+dice(); //lanciamo la funzione (lanciata anche in console)
+console.log("Esercizio 1: ", dice());
+
 /* ESERCIZIO 2
   Crea una funzione chiamata "whoIsBigger" che riceve due numeri come parametri e ritorna il maggiore dei due.
 */
+
+const whoIsBigger = (n1, n2) => {
+  console.log("Esercizio 2: "); //solo per chiarezza in console
+  if (n1 > n2) {
+    console.log(`${n1} è maggiore di ${n2}`);
+  } else if (n2 > n1) {
+    console.log(`${n1} è maggiore di ${n2}`);
+  } else {
+    console.log("I numeri sono uguali");
+  }
+};
+// Arrow function che prende due parametri
+// if statement che compare i parametri e mostra in console i risultati, template literals per integrare il valore dei parametri nel console.log
+
+whoIsBigger(5, 10);
+whoIsBigger(100, 9); // lanciamo la funzione e specifichiamo i paramentri
+whoIsBigger(5, 5);
 
 /* ESERCIZIO 3
   Crea una funzione chiamata "splitMe" che riceve una stringa come parametro e ritorna un'array contenente ogni parola della stringa.
@@ -93,10 +112,38 @@ console.log('Esercizio G: ', me)
   Es.: splitMe("I love coding") => ritorna ["I", "Love", "Coding"]
 */
 
+const splitMe = function (str) {
+  return str.split(" ");
+};
+
+//applicato metodo split che separa la stringa ad ogni spazio (' ')
+console.log("Esercizio 3: ", splitMe("Ora vado in pausa"));
+
 /* ESERCIZIO 4
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
   Se il valore booleano è true la funzione deve ritornare la stringa senza il primo carattere, altrimenti la deve ritornare senza l'ultimo.
 */
+
+const deleteOne = (str, boolean) => {
+  if (boolean === true) {
+    return str.substring(1); //Il numero tra () indica da quale posizione vogliamo 'conservare' caratteri
+    //abbiamo 'saltato' la lettera in posizione e uno e tenuto tutte le altre fino alla fine
+  } else {
+    return str.substring(0, str.length - 1);
+    //Qui abbiamo usato due parametri. Il primo inidica,come prima, da quale indice vogliamo 'conservare' i caratteri
+    // 0, quindi dalla prima lettera in poi vogliamo conservare i cartteri della stinga
+    // fino all' endIndex. str.length - 1 ovvero l'ultimo carattere (indipendentemente da quanti caratteri sono contenuti nella stringa)
+  }
+};
+
+/*Ho usato un if per verificare la condizione richiesto.
+Ho usato il metodo substing(startIndex, endIndex) 
+*/
+
+console.log("Esercizio 4: ", deleteOne("Sto imparanfo js!", true));
+console.log("Esercizio 4: ", deleteOne("Sto imparanfo js!", false));
+console.log("Esercizio 4: ", deleteOne("5 è un valore true",  5));
+console.log("Esercizio 4: ", deleteOne("Mentre 0 è un valore falso ", 0>-4));
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
@@ -104,10 +151,37 @@ console.log('Esercizio G: ', me)
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
 
+const onlyLetters = (str) => {
+let regex = /[^a-zA-Z' ']/g;
+ return str.replace(regex, '') // il metodo replace rimpiazze tutto quello espresso dal primo parametro con quello espresso dal secondo
+}
+//per eliminare tutti i caratteri che non fossero lettere dell'alfabeto e spazi ho usato una regular expression
+//  / indica dove l'espressione inizia e finisce
+// [] racchiude i tipi di carattere che vogliamo considere, tutte le lettere sell alfabeto sia maiuscole che minuscole e gli spazi vuoti
+// ^ significa no. 
+// Quindi qualsiasi carettere che NON è una lettera o uno spazio verà esclusa
+
+console.log('Esercizio 5: ', onlyLetters('CIAO 56, CIAO'))
+console.log('Esercizio 5: ', onlyLetters('76|=9875Ciao,.Hello,598375289,Hola'))
+console.log('Esercizio 5: ', onlyLetters('I have 4 dogs'))
+
+
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
 
+/* const isThisAnEmail = (email) => {
+  let regex = /[@/.com//.it/]/
+  if (email.toLowerCase().match(regex) ){
+console.log('valid email address')
+  } else {console.log('Email not valid')}
+} */ 
+//primo tentativo, ma non funziona. L'idea era di considerare come email valida ogni stringa che contensse una @ o .com e .it (non molto preciso)
+
+
+console.log(isThisAnEmail('serena@gmail.com'))
+
+console.log(isThisAnEmail('serenagmail'))
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
 */
@@ -239,116 +313,116 @@ console.log('Esercizio G: ', me)
 
 const movies = [
   {
-    Title: 'The Lord of the Rings: The Fellowship of the Ring',
-    Year: '2001',
-    imdbID: 'tt0120737',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Fellowship of the Ring",
+    Year: "2001",
+    imdbID: "tt0120737",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
   },
 
   {
-    Title: 'The Lord of the Rings: The Return of the King',
-    Year: '2003',
-    imdbID: 'tt0167260',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Return of the King",
+    Year: "2003",
+    imdbID: "tt0167260",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lord of the Rings: The Two Towers',
-    Year: '2002',
-    imdbID: 'tt0167261',
-    Type: 'movie',
+    Title: "The Lord of the Rings: The Two Towers",
+    Year: "2002",
+    imdbID: "tt0167261",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNGE5MzIyNTAtNWFlMC00NDA2LWJiMjItMjc4Yjg1OWM5NzhhXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of War',
-    Year: '2005',
-    imdbID: 'tt0399295',
-    Type: 'movie',
+    Title: "Lord of War",
+    Year: "2005",
+    imdbID: "tt0399295",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
-    Title: 'Lords of Dogtown',
-    Year: '2005',
-    imdbID: 'tt0355702',
-    Type: 'movie',
+    Title: "Lords of Dogtown",
+    Year: "2005",
+    imdbID: "tt0355702",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNDBhNGJlOTAtM2ExNi00NmEzLWFmZTQtYTZhYTRlNjJjODhmXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lord of the Rings',
-    Year: '1978',
-    imdbID: 'tt0077869',
-    Type: 'movie',
+    Title: "The Lord of the Rings",
+    Year: "1978",
+    imdbID: "tt0077869",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOGMyNWJhZmYtNGQxYi00Y2ZjLWJmNjktNTgzZWJjOTg4YjM3L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of the Flies',
-    Year: '1990',
-    imdbID: 'tt0100054',
-    Type: 'movie',
+    Title: "Lord of the Flies",
+    Year: "1990",
+    imdbID: "tt0100054",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOTI2NTQyODk0M15BMl5BanBnXkFtZTcwNTQ3NDk0NA@@._V1_SX300.jpg",
   },
   {
-    Title: 'The Lords of Salem',
-    Year: '2012',
-    imdbID: 'tt1731697',
-    Type: 'movie',
+    Title: "The Lords of Salem",
+    Year: "2012",
+    imdbID: "tt1731697",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMjA2NTc5Njc4MV5BMl5BanBnXkFtZTcwNTYzMTcwOQ@@._V1_SX300.jpg",
   },
   {
-    Title: 'Greystoke: The Legend of Tarzan, Lord of the Apes',
-    Year: '1984',
-    imdbID: 'tt0087365',
-    Type: 'movie',
+    Title: "Greystoke: The Legend of Tarzan, Lord of the Apes",
+    Year: "1984",
+    imdbID: "tt0087365",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTM5MzcwOTg4MF5BMl5BanBnXkFtZTgwOTQwMzQxMDE@._V1_SX300.jpg",
   },
   {
-    Title: 'Lord of the Flies',
-    Year: '1963',
-    imdbID: 'tt0057261',
-    Type: 'movie',
+    Title: "Lord of the Flies",
+    Year: "1963",
+    imdbID: "tt0057261",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BOGEwYTlhMTgtODBlNC00ZjgzLTk1ZmEtNmNkMTEwYTZiM2Y0XkEyXkFqcGdeQXVyMzU4Nzk4MDI@._V1_SX300.jpg",
   },
   {
-    Title: 'The Avengers',
-    Year: '2012',
-    imdbID: 'tt0848228',
-    Type: 'movie',
+    Title: "The Avengers",
+    Year: "2012",
+    imdbID: "tt0848228",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Infinity War',
-    Year: '2018',
-    imdbID: 'tt4154756',
-    Type: 'movie',
+    Title: "Avengers: Infinity War",
+    Year: "2018",
+    imdbID: "tt4154756",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Age of Ultron',
-    Year: '2015',
-    imdbID: 'tt2395427',
-    Type: 'movie',
+    Title: "Avengers: Age of Ultron",
+    Year: "2015",
+    imdbID: "tt2395427",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
   },
   {
-    Title: 'Avengers: Endgame',
-    Year: '2019',
-    imdbID: 'tt4154796',
-    Type: 'movie',
+    Title: "Avengers: Endgame",
+    Year: "2019",
+    imdbID: "tt4154796",
+    Type: "movie",
     Poster:
-      'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg',
+      "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
   },
-]
+];
