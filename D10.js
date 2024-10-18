@@ -510,8 +510,16 @@ console.log(searchAndDivide('Avengers: Infinity War'))
 
 
 const removeIndex = (index) => {
+  const result = []
+for(let i =0; i< movies.length; i++)
+{if (i !== index) { result.push(movies[i]) //controllo se l'indice è diverso, se è diverso lo aggiungo all'arry
+}}//l'unico film escluso sarà quello con l'indice uguale al parametro
+return result
 
 }
+console.log('Esercizio 19: ', removeIndex(3))
+
+
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
 /* ESERCIZIO 20
